@@ -10,13 +10,13 @@ namespace ConsoleApp1Todoit.Tests
     public class PersonTest
     {
         [Theory]
-        [InlineData(null,null)]
-        public void NullTest(string Fname, string Lname)
+        [InlineData(1,null,null)]
+        public void NullTest(int ID,string Fname, string Lname)
         {           
             try
             {
-                Person p1 = new Person(Fname, Lname);
-                Assert.Equal(Fname, p1.FirstName);
+                Person p1 = new Person(ID,Fname, Lname);
+                //Assert.Equal(Fname, p1.FirstName);
             }
             catch (ArgumentException ex)
             {
@@ -24,12 +24,12 @@ namespace ConsoleApp1Todoit.Tests
             }
         }
         [Theory]
-        [InlineData("Hamza", "Rahman")]
-        public void NormalTest(string Fname, string Lname)
+        [InlineData(1,"Magnus", "Ivarsson")]
+        public void NormalTest(int ID,string Fname, string Lname)
         {
-            Person p1 = new Person(Fname, Lname);
-            Assert.Equal("Hamza", p1.FirstName);
-            Assert.Equal("Rahman", p1.LastName);
+            Person p1 = new Person(ID,Fname, Lname);
+            Assert.Equal("Magnus", p1.FirstName);
+            Assert.Equal("Ivarsson", p1.LastName);
         }
     }
 }

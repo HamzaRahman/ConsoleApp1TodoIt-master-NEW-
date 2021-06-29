@@ -6,13 +6,13 @@ namespace ConsoleApp1TodoIt.Model
 {
     public class Person
     {
-        static int personId;
+        readonly int personId;
         string firstName;
         string lastName;
-        public Person(string firstName, string lastName)
+        public Person(int pID,string firstName, string lastName)
         {
             //Initializing/creating object.
-            personId++;
+            this.personId = pID;
             this.FirstName = firstName;
             this.LastName = lastName;
         }
