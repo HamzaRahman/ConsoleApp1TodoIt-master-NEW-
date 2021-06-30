@@ -16,6 +16,13 @@ namespace ConsoleApp1TodoIt.Model
             this.FirstName = firstName;
             this.LastName = lastName;
         }
+        public int PersonID
+        {
+            get
+            {
+                return personId;
+            }
+        }
         public string FirstName
         {
             get { return firstName; }
