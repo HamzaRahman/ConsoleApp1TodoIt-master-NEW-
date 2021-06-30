@@ -31,8 +31,8 @@ namespace ConsoleApp1TodoIt.Data
         }
         public Person AddPerson(string Fname,string Lname)
         {
-            var size = Size();
-            size=+1;
+            int size = Size();
+            size = size+1;
             Array.Resize<Person>(ref peoples,size);
             int ID = PersonSequencer.nextPersonid();
             Person p = new Person(ID, Fname, Lname);

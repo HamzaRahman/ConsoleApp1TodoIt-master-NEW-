@@ -12,7 +12,7 @@ namespace ConsoleApp1Todoit.Tests
         [Fact]
         public void PersonIDTest()
         {
-            var ID = PersonSequencer.nextPersonid();
+            int ID = PersonSequencer.nextPersonid();
             Assert.Equal(1, ID);
         }
         [Fact]

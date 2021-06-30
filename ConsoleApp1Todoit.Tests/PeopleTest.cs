@@ -14,7 +14,7 @@ namespace ConsoleApp1Todoit.Tests
         public void SizeTest()
         {
             int i=0;
-            var ps = p.Size();
+            int ps = p.Size();
             Assert.Equal(i.GetType(), ps.GetType());
         }
 
@@ -22,21 +22,21 @@ namespace ConsoleApp1Todoit.Tests
         public void FindAllTest()
         {
             Person[] peoples = new Person[0];
-            var ps = p.FindAll();
+            Person[] ps = p.FindAll();
             Assert.Equal(peoples.GetType(), ps.GetType());
         }
         [Theory]
         [InlineData("Magnus","Ivarson")]
         public void AddTest(string Fname,string Lname)
         {
-            var ps = p.AddPerson(Fname, Lname);
+            Person ps = p.AddPerson(Fname, Lname);
             Assert.Equal(2, ps.PersonID);
         }
         [Theory]
         [InlineData("Magnus", "Ivarson")]
         public void AddNewTest(string Fname, string Lname)
         {
-            var ps = p.AddPerson(Fname, Lname);
+            Person ps = p.AddPerson(Fname, Lname);
             Assert.Equal(1, ps.PersonID);
         }
     }

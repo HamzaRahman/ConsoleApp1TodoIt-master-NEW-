@@ -11,7 +11,7 @@ namespace ConsoleApp1Todoit.Tests
         [Fact]
         public void TodoIDTest()
         {
-            var ID = TodoSequencer.nextTodoid();
+            int ID = TodoSequencer.nextTodoid();
             Assert.Equal(1, ID);
         }
         [Fact]
