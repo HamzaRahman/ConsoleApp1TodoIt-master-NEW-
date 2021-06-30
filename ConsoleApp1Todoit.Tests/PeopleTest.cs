@@ -30,6 +30,13 @@ namespace ConsoleApp1Todoit.Tests
         public void AddTest(string Fname,string Lname)
         {
             var ps = p.AddPerson(Fname, Lname);
+            Assert.Equal(2, ps.PersonID);
+        }
+        [Theory]
+        [InlineData("Magnus", "Ivarson")]
+        public void AddNewTest(string Fname, string Lname)
+        {
+            var ps = p.AddPerson(Fname, Lname);
             Assert.Equal(1, ps.PersonID);
         }
     }
