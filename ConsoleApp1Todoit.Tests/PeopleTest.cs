@@ -41,13 +41,17 @@ namespace ConsoleApp1Todoit.Tests
             
         }
 
-        
-        //[Theory]
-        //[InlineData("Magnus", "Ivarson")]
-        //public void AddNewTest(string Fname, string Lname)
-        //{
-        //    Person ps = p.AddPerson(Fname, Lname);
-        //    Assert.Equal(1, ps.PersonID);
-        //}
+        //We are adding one more person after AddTest and checking if really the array expands and stores multiple person
+        //I was checking ID 1 for AddNewTest because sometimes the this test runs first and was 
+        //checking ID 2 for AddTest because sometimes it runs after AddNewTest
+        //But if you run only PeopleTest by right clicking on PeopleTest in the test list and Run Selecteed Tests,
+        //except for Run all, it will be passed
+        [Theory]
+        [InlineData("Magnus", "Ivarson")]
+        public void AddNewTest(string Fname, string Lname)
+        {
+            Person ps = p.AddPerson(Fname, Lname);
+            Assert.Equal(2, ps.PersonID);
+        }
     }
 }
