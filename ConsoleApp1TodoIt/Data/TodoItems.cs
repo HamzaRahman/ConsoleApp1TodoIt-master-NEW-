@@ -115,21 +115,21 @@ namespace ConsoleApp1TodoIt.Data
         {
             int size = 0;
             Todo[] TD = new Todo[0];
-            //Here we run a foreach loop on peoples array
+            //Here we run a foreach loop on todoitems array
             foreach (var p in todoitems)
             {
-                //Then we compare our wanted ID with every persons ID
+                //Then we compare our wanted ID with every Todo ID
                 if (p.todoID != todoid)
                 {
-                    //if its not found then it will be stored in pps array
+                    //if its not found then it will be stored in TD array
                     size = size + 1;
                     Array.Resize<Todo>(ref TD, size);
                     TD[size - 1] = p;
                 }
             }
-            //Now we copy pps array to peoples array
+            //Now we copy TD array to todoitems array
             Array.Copy(TD, todoitems, size);
-            //returning pps array
+            //returning TD array
             return TD;
         }
     }
