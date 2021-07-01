@@ -95,5 +95,42 @@ namespace ConsoleApp1TodoIt.Data
             }
             return ti;
         }
+        public Todo[] FindUnassignedTodoItems()//10 d
+        {
+            int size = 0;
+            Todo[] ti = new Todo[0];
+            foreach (var t in todoitems)
+            {
+                //To check if this person is same as we want, we compare its ID, FirstName and LastName
+                if (t.Assignee == null)
+                {
+                    size = size + 1;
+                    Array.Resize<Todo>(ref ti, size);
+                    ti[size - 1] = t;
+                }
+            }
+            return ti;
+        }
+        public Todo[] RemoveTodo(int todoid)//11 a
+        {
+            int size = 0;
+            Todo[] TD = new Todo[0];
+            //Here we run a foreach loop on peoples array
+            foreach (var p in todoitems)
+            {
+                //Then we compare our wanted ID with every persons ID
+                if (p.todoID != todoid)
+                {
+                    //if its not found then it will be stored in pps array
+                    size = size + 1;
+                    Array.Resize<Todo>(ref TD, size);
+                    TD[size - 1] = p;
+                }
+            }
+            //Now we copy pps array to peoples array
+            Array.Copy(TD, todoitems, size);
+            //returning pps array
+            return TD;
+        }
     }
 }

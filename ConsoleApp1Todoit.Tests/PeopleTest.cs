@@ -53,5 +53,29 @@ namespace ConsoleApp1Todoit.Tests
             Person ps = p.AddPerson(Fname, Lname);
             Assert.Equal(2, ps.PersonID);
         }
+        [Fact]
+        public void RemovePersonTest()//11 b
+        {
+            bool actualresult = false;
+            //Here we add 2 persons first in the Persons Array
+            p.AddPerson("dd", "ee");
+            p.AddPerson("dd", "ee");
+            //Then we remove our wanted person by his ID
+            Person[] t = p.RemovePerson(1);
+            foreach (var c in t)
+            {
+                //Now we verify/test if the returned array have all and only persons of ID except 1, meaning  1 is removed or not.
+                if (c.PersonID == 1)
+                {
+                    actualresult = false;
+                    break;
+                }
+                else
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
     }
 }

@@ -106,6 +106,50 @@ namespace ConsoleApp1Todoit.Tests
             }
             Assert.True(actualresult);
         }
+
+        [Fact]
+        public void FindByUnAssignedTodoItemsTest()//10 d
+        {
+            bool actualresult = false;
+            Person pr = new Person(1, "dd", "ee");
+            //Here we add a person first in the Todo array
+            p.AddTodo("DDD", true, null);
+            //Then we find for Todo items which have assignee equal to FBA (Input search data)
+            Todo[] t = p.FindUnassignedTodoItems();
+            foreach (var c in t)
+            {
+                //Now we verify/test if the returned array has all and only assignee equal to FBA (Input search data) todo items
+                if (c.Assignee == null)
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
+        [Fact]
+        public void RemoveTodoTest()//11 b
+        {
+            bool actualresult = false;
+            //Here we add 2 persons first in the Persons Array
+            p.AddTodo("DDD", true, null);
+            p.AddTodo("DDD", true, null);
+            //Then we remove our wanted person by his ID
+            Todo[] t = p.RemoveTodo(1);
+            foreach (var c in t)
+            {
+                //Now we verify/test if the returned array have all and only persons of ID except 1, meaning  1 is removed or not.
+                if (c.todoID == 1)
+                {
+                    actualresult = false;
+                    break;
+                }
+                else
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
     }
 
 }
