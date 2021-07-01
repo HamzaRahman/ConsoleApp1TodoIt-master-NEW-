@@ -10,6 +10,14 @@ namespace ConsoleApp1Todoit.Tests
     public class PeopleTest
     {
         People p = new People();
+        [Theory]
+        [InlineData(1)]
+        public void FindByIDTest(int ID)
+        {
+            p.AddPerson("MM", "ff");
+            Person ps = p.FindByID(ID);
+            Assert.Equal(1, ps.PersonID);
+        }
         [Fact]
         public void SizeTest()
         {
@@ -17,7 +25,6 @@ namespace ConsoleApp1Todoit.Tests
             int ps = p.Size();
             Assert.Equal(i.GetType(), ps.GetType());
         }
-
         [Fact]
         public void FindAllTest()
         {
@@ -30,14 +37,17 @@ namespace ConsoleApp1Todoit.Tests
         public void AddTest(string Fname,string Lname)
         {
             Person ps = p.AddPerson(Fname, Lname);
-            Assert.Equal(2, ps.PersonID);
-        }
-        [Theory]
-        [InlineData("Magnus", "Ivarson")]
-        public void AddNewTest(string Fname, string Lname)
-        {
-            Person ps = p.AddPerson(Fname, Lname);
             Assert.Equal(1, ps.PersonID);
+            
         }
+
+        
+        //[Theory]
+        //[InlineData("Magnus", "Ivarson")]
+        //public void AddNewTest(string Fname, string Lname)
+        //{
+        //    Person ps = p.AddPerson(Fname, Lname);
+        //    Assert.Equal(1, ps.PersonID);
+        //}
     }
 }
