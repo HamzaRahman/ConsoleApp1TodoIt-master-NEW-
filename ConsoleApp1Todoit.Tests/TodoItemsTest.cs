@@ -29,8 +29,9 @@ namespace ConsoleApp1Todoit.Tests
         [InlineData(1)]
         public void FindByIDTest(int ID)
         {
+            Person pr = new Person(1, "dd", "ee");
             //To test find by ID, we first store a todo item
-            p.AddTodo("mm");
+            p.AddTodo("mm",true,pr);
             //Then we test to find it by giving its ID
             Todo ps = p.FindByID(ID);
             Assert.Equal(1, ps.todoID);
@@ -39,16 +40,72 @@ namespace ConsoleApp1Todoit.Tests
         [InlineData("Todo 1")]
         public void AddTest(string Desc)
         {
-            Todo ps = p.AddTodo(Desc);
+            Person pr = new Person(1, "dd", "ee");
+            Todo ps = p.AddTodo(Desc,true,pr);
             Assert.Equal(1, ps.todoID);
         }
-        
-        //[Theory]
-        //[InlineData("Todo 2")]
-        //public void AddNewTest(string Desc)
-        //{
-        //    Todo ps = p.AddTodo(Desc);
-        //    Assert.Equal(1, ps.todoID);
-        //}
+        [Theory]
+        [InlineData(true)]
+        public void FindByDoneStatusTest(bool s)
+        {
+            bool actualresult = false;
+            Person pr = new Person(1, "dd", "ee");
+            //Here we add a person first in the Todo array
+            p.AddTodo("DDD",true,pr);
+            //Then we find for Todo items which have done status true
+            Todo[] t = p.FindByDoneStatus(s);
+            foreach(var c in t)
+            {
+                //Now we verify/test if the returned array has all and only true done status todo items
+                if(c.Done == s)
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
+        [Theory]
+        [InlineData(1)]
+        public void FindByAssignee(int ID)
+        {
+            bool actualresult = false;
+            Person pr = new Person(1, "dd", "ee");
+            p.AddTodo("DDD", true, pr);
+            //Then we find for Todo items which have assignee ID equal to 1
+            Todo[] t = p.FindByAssignee(ID);
+            foreach (var c in t)
+            {
+                //Now we verify/test if the returned array has all and only assignee ID equal to 1 todo items
+                Assert.Equal(1, c.Assignee.PersonID);
+                if (c.Assignee.PersonID == ID)
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
+        //Here we take a Person for input search, (we are not going to add it in the array)
+        Person FBA = new Person(1, "dd", "ee");
+        [Fact]
+        public void FindByAssigneeTest()
+        {
+            bool actualresult = false;
+            Person pr = new Person(1, "dd", "ee");
+            //Here we add a person first in the Todo array
+            p.AddTodo("DDD", true, pr);
+            //Then we find for Todo items which have assignee equal to FBA (Input search data)
+            Todo[] t = p.FindByAssignee(FBA);
+            foreach (var c in t)
+            {
+                //Now we verify/test if the returned array has all and only assignee equal to FBA (Input search data) todo items
+                if ((c.Assignee.PersonID == FBA.PersonID) && (c.Assignee.FirstName == FBA.FirstName) 
+                    && (c.Assignee.LastName == FBA.LastName))
+                {
+                    actualresult = true;
+                }
+            }
+            Assert.True(actualresult);
+        }
     }
+
 }
