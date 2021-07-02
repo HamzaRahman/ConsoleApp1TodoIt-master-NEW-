@@ -28,6 +28,7 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 6 To Add A Todo Item");
                 Console.WriteLine("Enter 7 To Find A Todo Item By ID");
                 Console.WriteLine("Enter 8 To Show All Todo Item");
+                Console.WriteLine("Enter 9 To Show Number of Todo Items");
 
                 Console.WriteLine("Enter 10 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -116,7 +117,7 @@ namespace ConsoleApp1TodoIt
                             t.AddTodo(desc, donestatus, pById);
                             Console.WriteLine("Todo Item Added\nPress Enter To Continue To Menu");
                             Console.ReadLine();
-                            Console.ReadLine();
+                            //Console.ReadLine();
                         }
                         break;
                     //Task 9 d.
@@ -148,6 +149,13 @@ namespace ConsoleApp1TodoIt
                             string id = Convert.ToString(d.todoID);
                             Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, d.Assignee.FirstName);
                         }
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
+                    //Task 9 b.
+                    case 9:
+                        Size = Convert.ToString(t.Size());
+                        Console.WriteLine("The Number of Todo Items is:{0}", Size);
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
