@@ -34,6 +34,17 @@ namespace ConsoleApp1TodoIt.Model
                 done = value;
             }
         }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
         public Person Assignee
         {
             get

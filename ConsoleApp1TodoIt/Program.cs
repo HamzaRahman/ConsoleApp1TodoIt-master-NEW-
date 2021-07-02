@@ -26,6 +26,7 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 5 To Delete All Person");
 
                 Console.WriteLine("Enter 6 To Add A Todo Item");
+                Console.WriteLine("Enter 7 To Find A Todo Item By ID");
 
                 Console.WriteLine("Enter 10 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -117,7 +118,26 @@ namespace ConsoleApp1TodoIt
                             Console.ReadLine();
                         }
                         break;
-
+                    //Task 9 d.
+                    case 7:
+                        Console.WriteLine("Enter The Todo Item's ID To Find That Todo Item");
+                        ID = Convert.ToInt32(Console.ReadLine());
+                        Todo tById = t.FindByID(ID);
+                        if (tById.todoID == 0)
+                        {
+                            Console.WriteLine("Person Does Not Exist In The List.");
+                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            string status = Convert.ToString(tById.Done);
+                            Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
+                            Console.WriteLine("{0}   {1}           {2}             {3}", ID, tById.Description, status, tById.Assignee.FirstName);
+                            Console.WriteLine("Press Enter To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        break;
 
                     case 10:
                         Run = false;
