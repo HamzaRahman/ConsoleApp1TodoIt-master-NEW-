@@ -85,7 +85,7 @@ namespace ConsoleApp1TodoIt.Data
             foreach (var t in todoitems)
             {
                 //To check if this person is same as we want, we compare its ID, FirstName and LastName
-                if ((t.Assignee.PersonID == assignee.PersonID) && (t.Assignee.FirstName == assignee.FirstName)
+                if ((t.Assignee.FirstName == assignee.FirstName)
                     && (t.Assignee.LastName == assignee.LastName))
                 {
                     size = size + 1;

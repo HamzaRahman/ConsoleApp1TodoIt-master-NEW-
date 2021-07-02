@@ -98,7 +98,7 @@ namespace ConsoleApp1Todoit.Tests
             foreach (var c in t)
             {
                 //Now we verify/test if the returned array has all and only assignee equal to FBA (Input search data) todo items
-                if ((c.Assignee.PersonID == FBA.PersonID) && (c.Assignee.FirstName == FBA.FirstName) 
+                if ((c.Assignee.FirstName == FBA.FirstName) 
                     && (c.Assignee.LastName == FBA.LastName))
                 {
                     actualresult = true;

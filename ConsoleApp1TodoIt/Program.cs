@@ -33,6 +33,7 @@ namespace ConsoleApp1TodoIt
 
                 Console.WriteLine("Enter 11 Find All Todo Items By Done/Completed Status");
                 Console.WriteLine("Enter 12 Find All Todo Items By Assignee/Person's ID");
+                Console.WriteLine("Enter 13 Find All Todo Items By Assignee/Person");
 
                 Console.WriteLine("Enter 16 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -199,6 +200,25 @@ namespace ConsoleApp1TodoIt
                         ID = Convert.ToInt32(Console.ReadLine());
                         
                         td = t.FindByAssignee(ID);
+                        Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
+                        foreach (var d in td)
+                        {
+                            string id = Convert.ToString(d.todoID);
+                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, d.Assignee.FirstName);
+                        }
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
+                    //Task 10 c.
+                    case 13:
+                        Console.WriteLine("Enter The Assignee's FirstName For Which You Want Find Todo Items");
+                        Fn = Console.ReadLine();
+                        Console.WriteLine("Enter The Assignee's LastName For Which You Want Find Todo Items");
+                        Ln = Console.ReadLine();
+                        //We are entering ID which is just fake and will not be used to search
+                        //The search will only be made on First Name and Last Name
+                        Person asigne = new Person(1,Fn, Ln);
+                        td = t.FindByAssignee(asigne);
                         Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
                         foreach (var d in td)
                         {
