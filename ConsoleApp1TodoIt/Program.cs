@@ -32,6 +32,7 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 10 Delete All Todo Items");
 
                 Console.WriteLine("Enter 11 Find All Todo Items By Done/Completed Status");
+                Console.WriteLine("Enter 12 Find All Todo Items By Assignee/Person's ID");
 
                 Console.WriteLine("Enter 16 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -168,6 +169,7 @@ namespace ConsoleApp1TodoIt
                         Console.WriteLine("Deleted\nPress Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
+                    //Task 10 a.
                     case 11:
                         Console.WriteLine("Enter The Completed/Status For Which You Want Find Todo Items");
                         Console.WriteLine("Enter 1 For Completed/Done\n Enter 2 For UnComplete/Not Done");
@@ -191,7 +193,21 @@ namespace ConsoleApp1TodoIt
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
-
+                    //Task 10 b.
+                    case 12:
+                        Console.WriteLine("Enter The Assignee's ID For Which You Want Find Todo Items");
+                        ID = Convert.ToInt32(Console.ReadLine());
+                        
+                        td = t.FindByAssignee(ID);
+                        Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
+                        foreach (var d in td)
+                        {
+                            string id = Convert.ToString(d.todoID);
+                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, d.Assignee.FirstName);
+                        }
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
                     case 16:
                         Run = false;
                         break;
