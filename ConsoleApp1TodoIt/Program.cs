@@ -27,6 +27,7 @@ namespace ConsoleApp1TodoIt
 
                 Console.WriteLine("Enter 6 To Add A Todo Item");
                 Console.WriteLine("Enter 7 To Find A Todo Item By ID");
+                Console.WriteLine("Enter 8 To Show All Todo Item");
 
                 Console.WriteLine("Enter 10 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -102,7 +103,7 @@ namespace ConsoleApp1TodoIt
                         {
                             Console.WriteLine("Is This Todo Item Task Completed Or In-Progress ?");
                             Console.WriteLine("Enter 1 For Yes\n Enter 2 For No");
-                            var c = Console.Read();
+                            var c = Convert.ToInt32(Console.ReadLine());
                             bool donestatus;
                             if(c==1)
                             {
@@ -137,6 +138,18 @@ namespace ConsoleApp1TodoIt
                             Console.WriteLine("Press Enter To Continue To Menu");
                             Console.ReadLine();
                         }
+                        break;
+                    //Task 9 c.
+                    case 8:
+                        Todo[] todoitems = t.FindAll();
+                        Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
+                        foreach (var d in todoitems)
+                        {
+                            string id = Convert.ToString(d.todoID);
+                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, d.Assignee.FirstName);
+                        }
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
                         break;
 
                     case 10:
