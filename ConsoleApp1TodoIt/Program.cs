@@ -14,6 +14,7 @@ namespace ConsoleApp1TodoIt
             //Person p1 = new Person(1,"Magnus", "Ivarson");
 
             People p = new People();
+            TodoItems t = new TodoItems();
 
             bool Run = true;
             while(Run)
@@ -23,7 +24,10 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 3 To Show All Person");
                 Console.WriteLine("Enter 4 To Show Number of Person");
                 Console.WriteLine("Enter 5 To Delete All Person");
-                Console.WriteLine("Enter 6 To Exit Menu");
+
+                Console.WriteLine("Enter 6 To Add A Todo Item");
+
+                Console.WriteLine("Enter 10 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -80,7 +84,42 @@ namespace ConsoleApp1TodoIt
                         Console.ReadLine();
                         break;
 
+                    //Task 9 e.
                     case 6:
+                        Console.WriteLine("Enter Description");
+                        string desc = Console.ReadLine();
+                        Console.WriteLine("Enter Person's ID to Assign Him This Todo Item");
+                        ID = Convert.ToInt32(Console.ReadLine());
+                        pById = p.FindByID(ID);
+                        if (pById.PersonID == 0)
+                        {
+                            Console.WriteLine("Person Does Not Exist In The List.\n Please Add This Person First In The List");
+                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Is This Todo Item Task Completed Or In-Progress ?");
+                            Console.WriteLine("Enter 1 For Yes\n Enter 2 For No");
+                            var c = Console.Read();
+                            bool donestatus;
+                            if(c==1)
+                            {
+                                donestatus = true;
+                            }
+                            else
+                            {
+                                donestatus = false;
+                            }
+                            t.AddTodo(desc, donestatus, pById);
+                            Console.WriteLine("Todo Item Added\nPress Enter To Continue To Menu");
+                            Console.ReadLine();
+                            Console.ReadLine();
+                        }
+                        break;
+
+
+                    case 10:
                         Run = false;
                         break;
                     default:
