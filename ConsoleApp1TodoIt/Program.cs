@@ -19,7 +19,8 @@ namespace ConsoleApp1TodoIt
             while(Run)
             {
                 Console.WriteLine("Enter 1 To Add A Person");
-                
+                Console.WriteLine("Enter 2 To Find A Person By ID");
+
                 Console.WriteLine("Enter 5 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -31,11 +32,29 @@ namespace ConsoleApp1TodoIt
                         string Ln = Console.ReadLine();
                         p.AddPerson(Fn, Ln);
                         break;
+                    case 2:
+                        Console.WriteLine("Enter The Person's ID To Find That Person");
+                        int ID = Convert.ToInt32(Console.ReadLine());
+                        Person pById = p.FindByID(ID);
+                        if(pById.PersonID == 0)
+                        {
+                            Console.WriteLine("Person Does Not Exist In The List.");
+                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("ID. First Name. Last Name");
+                            Console.WriteLine("{0}   {1}          {2}", ID, pById.FirstName, pById.LastName);
+                            Console.WriteLine("Press Enter To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        break;
                     case 5:
                         Run = false;
                         break;
                     default:
-                        Console.WriteLine("Wrong Choice, Press Anything To Continue To Menu");
+                        Console.WriteLine("Wrong Choice, Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;     
                 }
