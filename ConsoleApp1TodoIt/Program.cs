@@ -21,10 +21,12 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 1 To Add A Person");
                 Console.WriteLine("Enter 2 To Find A Person By ID");
                 Console.WriteLine("Enter 3 To Show All Person");
+                Console.WriteLine("Enter 4 To Show Number of Person");
                 Console.WriteLine("Enter 5 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
+                    //Task 8 e.
                     case 1:
                         Console.WriteLine("Enter First Name");
                         string Fn = Console.ReadLine();
@@ -32,6 +34,7 @@ namespace ConsoleApp1TodoIt
                         string Ln = Console.ReadLine();
                         p.AddPerson(Fn, Ln);
                         break;
+                    //Task 8 d.
                     case 2:
                         Console.WriteLine("Enter The Person's ID To Find That Person");
                         int ID = Convert.ToInt32(Console.ReadLine());
@@ -50,18 +53,25 @@ namespace ConsoleApp1TodoIt
                             Console.ReadLine();
                         }
                         break;
+                    //Task 8 c.
                     case 3:
                         Person[] people = p.FindAll();
                         Console.WriteLine("ID. First Name. Last Name");
                         foreach (var d in people)
                         {
-                            var id = Convert.ToString(d.PersonID);
+                            string id = Convert.ToString(d.PersonID);
                             Console.WriteLine("{0}   {1}          {2}", id, d.FirstName, d.LastName);
                         }
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
-
+                    //Task 8 b.
+                    case 4:
+                        string Size = Convert.ToString(p.Size());
+                        Console.WriteLine("The Number of People is:{0}", Size);
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
                     case 5:
                         Run = false;
                         break;
