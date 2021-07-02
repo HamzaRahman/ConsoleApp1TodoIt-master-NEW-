@@ -34,8 +34,10 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 11 Find All Todo Items By Done/Completed Status");
                 Console.WriteLine("Enter 12 Find All Todo Items By Assignee/Person's ID");
                 Console.WriteLine("Enter 13 Find All Todo Items By Assignee/Person");
+                Console.WriteLine("Enter 14 Find All Todo Items Which Are UnAssigned");
 
-                Console.WriteLine("Enter 16 To Exit Menu");
+                Console.WriteLine("Enter 15 To Delete A Person from People/List");
+                Console.WriteLine("Enter 17 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -101,8 +103,21 @@ namespace ConsoleApp1TodoIt
                         pById = p.FindByID(ID);
                         if (pById.PersonID == 0)
                         {
-                            Console.WriteLine("Person Does Not Exist In The List.\n Please Add This Person First In The List");
-                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.WriteLine("Person Does Not Exist In The List.\n Added Null/Blank Assignee To This Task");
+                            Console.WriteLine("Is This Todo Item Task Completed Or In-Progress ?");
+                            Console.WriteLine("Enter 1 For Yes\n Enter 2 For No");
+                            var c = Convert.ToInt32(Console.ReadLine());
+                            bool donestatus;
+                            if (c == 1)
+                            {
+                                donestatus = true;
+                            }
+                            else
+                            {
+                                donestatus = false;
+                            }
+                            t.AddTodo(desc, donestatus, null);
+                            Console.WriteLine("Todo Item Added\nPress Enter To Continue To Menu");
                             Console.ReadLine();
                         }
                         else
@@ -228,7 +243,37 @@ namespace ConsoleApp1TodoIt
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
+                    case 14:
+                        td = t.FindUnassignedTodoItems();
+                        Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
+                        foreach (var d in td)
+                        {
+                            string id = Convert.ToString(d.todoID);
+                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, "UnAssigned");
+                        }
+                        Console.WriteLine("Press Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
+                    case 15:
+                        Console.WriteLine("Note: After Deleting A Person, Its ID will not be re-assigned to new person.");
+                        Console.WriteLine("Enter The Person's ID To Delete That Person");
+                        ID = Convert.ToInt32(Console.ReadLine());
+                        pById = p.FindByID(ID);
+                        if (pById.PersonID == 0)
+                        {
+                            Console.WriteLine("Person Does Not Exist In The List. Please Enter Correct ID");
+                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            p.RemovePerson(ID);
+                            Console.WriteLine("Deleted.\nPress Enter To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        break;
                     case 16:
+                    case 17:
                         Run = false;
                         break;
                     default:

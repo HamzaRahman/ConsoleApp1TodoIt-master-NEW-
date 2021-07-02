@@ -62,6 +62,8 @@ namespace ConsoleApp1TodoIt.Data
                     pps[size - 1] = p;
                 }
             }
+            Clear();
+            Array.Resize<Person>(ref peoples, size);
             //Now we copy pps array to peoples array
             Array.Copy(pps, peoples, size);
             //returning pps array
