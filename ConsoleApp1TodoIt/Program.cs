@@ -37,6 +37,7 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 14 Find All Todo Items Which Are UnAssigned");
 
                 Console.WriteLine("Enter 15 To Delete A Person from People/List");
+                Console.WriteLine("Enter 16 To Delete A Todo from Todo Items/List");
                 Console.WriteLine("Enter 17 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -166,8 +167,17 @@ namespace ConsoleApp1TodoIt
                         Console.WriteLine("ID. Description. Completed Status. Assignee's FirstName");
                         foreach (var d in todoitems)
                         {
+                            var assigFname = "UnAssigned";
+                            if (d.Assignee == null)
+                            {
+                                assigFname = "UnAssigned";
+                            }
+                            else
+                            {
+                                assigFname = d.Assignee.FirstName;
+                            }
                             string id = Convert.ToString(d.todoID);
-                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, d.Assignee.FirstName);
+                            Console.WriteLine("{0}   {1}           {2}             {3}", id, d.Description, d.Done, assigFname);
                         }
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
@@ -273,6 +283,23 @@ namespace ConsoleApp1TodoIt
                         }
                         break;
                     case 16:
+                        Console.WriteLine("Note: After Deleting A Todo Item, Its ID will not be re-assigned to new Todo Item.");
+                        Console.WriteLine("Enter The Todo Item's ID To Delete That Todo Item");
+                        ID = Convert.ToInt32(Console.ReadLine());
+                        tById = t.FindByID(ID);
+                        if (tById.todoID == 0)
+                        {
+                            Console.WriteLine("Todo Item Does Not Exist In The List. Please Enter Correct ID");
+                            Console.WriteLine("Press Anything To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            t.RemoveTodo(ID);
+                            Console.WriteLine("Deleted.\nPress Enter To Continue To Menu");
+                            Console.ReadLine();
+                        }
+                        break;
                     case 17:
                         Run = false;
                         break;

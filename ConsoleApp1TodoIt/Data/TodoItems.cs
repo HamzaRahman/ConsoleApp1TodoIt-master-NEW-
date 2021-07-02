@@ -127,6 +127,8 @@ namespace ConsoleApp1TodoIt.Data
                     TD[size - 1] = p;
                 }
             }
+            Clear();
+            Array.Resize<Todo>(ref todoitems, size);
             //Now we copy TD array to todoitems array
             Array.Copy(TD, todoitems, size);
             //returning TD array
