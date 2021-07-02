@@ -22,7 +22,8 @@ namespace ConsoleApp1TodoIt
                 Console.WriteLine("Enter 2 To Find A Person By ID");
                 Console.WriteLine("Enter 3 To Show All Person");
                 Console.WriteLine("Enter 4 To Show Number of Person");
-                Console.WriteLine("Enter 5 To Exit Menu");
+                Console.WriteLine("Enter 5 To Delete All Person");
+                Console.WriteLine("Enter 6 To Exit Menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -72,7 +73,14 @@ namespace ConsoleApp1TodoIt
                         Console.WriteLine("Press Enter To Continue To Menu");
                         Console.ReadLine();
                         break;
+                    //Task 8 f.    
                     case 5:
+                        p.Clear();
+                        Console.WriteLine("Deleted\nPress Enter To Continue To Menu");
+                        Console.ReadLine();
+                        break;
+
+                    case 6:
                         Run = false;
                         break;
                     default:
